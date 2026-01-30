@@ -1,0 +1,11 @@
+int best_index = -1;
+int smallest_size = INT_MAX;
+
+for (int i = 0; i < memory.size(); i++)
+{
+    if (memory[i].free && memory[i].size < smallest_size)
+    {
+        smallest_size = memory[i].size;
+        best_index = i;
+    }
+}
