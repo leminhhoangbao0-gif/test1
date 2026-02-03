@@ -127,27 +127,27 @@
    <widget class="QLineEdit" name="editBase">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>290</x>
       <y>250</y>
-      <width>71</width>
+      <width>151</width>
       <height>26</height>
      </rect>
     </property>
     <property name="text">
-     <string>Edit base</string>
+     <string>Edit base(delete first)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="editSize">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>460</x>
       <y>250</y>
-      <width>71</width>
+      <width>151</width>
       <height>26</height>
      </rect>
     </property>
     <property name="text">
-     <string>Edit size</string>
+     <string>Edit size (delete first)</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAddBlock">

@@ -13,17 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow),
     scene(new QGraphicsScene(this))
 {
-    //note to the teacher: we don't know how to make it run in the ui so we put the base and size here
     ui->setupUi(this);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setSceneRect(0,0,400,600);
-    vector<block> init;
-    init.push_back({0, 300, true});
-    init.push_back({300, 200, true});
-    init.push_back({500, 150, true});
-    init.push_back({650, 250, true});
 
-    manager.setmemory(init);
     showTable();
     drawMemory();
 }
