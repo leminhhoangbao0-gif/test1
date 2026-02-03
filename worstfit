@@ -1,11 +1,16 @@
-int best_index = -1;
-int smallest_size = INT_MAX;
+#include "worstfit.h"
+#include <climits>
 
-for (int i = 0; i < memory.size(); i++)
-{
-    if (memory[i].free && memory[i].size < smallest_size)
-    {
-        smallest_size = memory[i].size;
-        best_index = i;
+int worst_index =-1;
+int biggest_size =0;
+
+int worstfit::findblock(const vector<block>& memory, int size) {
+    for (int i =0;i<memory.size();i++){
+        if (memory[i].free && memory[i].size >biggest_size){
+            biggest_size = memory[i].size;
+            worst_index =i;
+        }
     }
+    return worst_index;
 }
+
