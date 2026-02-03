@@ -25,6 +25,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
+    void on_btnAddBlock_clicked();
+    void on_btnSaveBlocks_clicked();
+    void on_btnLoadBlocks_clicked();
     void on_btnLoad_clicked();
     void on_btnRun_clicked();
     void on_btnStress_clicked();
@@ -34,8 +37,10 @@ private:
     QGraphicsScene* scene;
 
     QVector<process> processes;
+    QVector<block> userBlocks;
     memorymanager manager;
 
+    void refreshBlockTable();
     void showTable();
     void drawMemory();
 };

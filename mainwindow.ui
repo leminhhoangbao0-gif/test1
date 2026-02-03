@@ -124,6 +124,71 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLineEdit" name="editBase">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>250</y>
+      <width>71</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edit base</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="editSize">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>250</y>
+      <width>71</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edit size</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAddBlock">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>81</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Block</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSaveBlocks">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>250</y>
+      <width>81</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save Block</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLoadBlocks">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>250</y>
+      <width>81</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load Block</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

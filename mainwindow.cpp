@@ -32,6 +32,80 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::refreshBlockTable()
+{
+    ui->tableWidget->clear();
+
+    ui->tableWidget->setRowCount(userBlocks.size());
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setHorizontalHeaderLabels({"Base","Size","Free"});
+
+    for (int i = 0; i < userBlocks.size(); ++i) {
+        ui->tableWidget->setItem(i,0,
+                                 new QTableWidgetItem(QString::number(userBlocks[i].base)));
+
+        ui->tableWidget->setItem(i,1,
+                                 new QTableWidgetItem(QString::number(userBlocks[i].size)));
+
+        ui->tableWidget->setItem(i,2,
+                                 new QTableWidgetItem(userBlocks[i].free ? "Yes" : "No"));
+    }
+}
+void MainWindow::on_btnAddBlock_clicked()
+{
+    block b;
+    b.base = ui->editBase->text().toInt();
+    b.size = ui->editSize->text().toInt();
+    b.free = true;
+
+    userBlocks.push_back(b);
+
+    refreshBlockTable();
+}
+void MainWindow::on_btnSaveBlocks_clicked()
+{
+    QString path = QFileDialog::getSaveFileName(this,"Save Blocks","","CSV Files (*.csv)");
+    if(path.isEmpty()) return;
+
+    QFile file(path);
+    file.open(QIODevice::WriteOnly);
+
+    QTextStream out(&file);
+    out << "Base,Size\n";
+
+    for(auto &b : userBlocks)
+        out << b.base << "," << b.size << "\n";
+}
+void MainWindow::on_btnLoadBlocks_clicked()
+{
+    QString path = QFileDialog::getOpenFileName(this,"Load Blocks","","CSV Files (*.csv)");
+    if(path.isEmpty()) return;
+
+    QFile file(path);
+    file.open(QIODevice::ReadOnly);
+
+    QTextStream in(&file);
+    in.readLine();
+
+    userBlocks.clear();
+
+    while(!in.atEnd()){
+        auto parts = in.readLine().split(",");
+        if(parts.size()<2) continue;
+
+        block b;
+        b.base = parts[0].toInt();
+        b.size = parts[1].toInt();
+        b.free = true;
+
+        userBlocks.push_back(b);
+    }
+
+    manager.setmemory({userBlocks.begin(), userBlocks.end()});
+    showTable();
+    drawMemory();
+}
+
 void MainWindow::on_btnLoad_clicked()
 {
     QString path = QFileDialog::getOpenFileName(this, "Open CSV", "", "CSV Files (*.csv)");
